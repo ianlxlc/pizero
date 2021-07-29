@@ -52,7 +52,7 @@ try:
     # get local time    
     tz_LA = pytz.timezone('America/Los_Angeles') 
     datetime_LA = datetime.now(tz_LA)
-    time_disp = "Seattle time:", datetime_LA.strftime("%H:%M:%S")
+    time_disp = "Seattle time:" + datetime_LA.strftime("%H:%M:%S")
     # print("Seattle time:", datetime_LA.strftime("%H:%M:%S"))
 
     # hostname = socket.gethostname()
