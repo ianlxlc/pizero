@@ -40,9 +40,9 @@ try:
     
     dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width)
 
-    routes = json.loads(os.popen("ip -j -4 route").read()
-
+    # routes = json.loads(os.popen("ip -j -4 route").read()
     ip_val = "Not Found"
+    routes = json.loads(os.popen("ip -j -4 route")).read()
     for r in routes:
         if r.get("dev") == "wlan0" and r.get("prefsrc"):
             ip_val = r['prefsrc']
