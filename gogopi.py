@@ -14,6 +14,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 import socket
+import json
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -37,9 +38,18 @@ try:
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
     
-    dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width) 
-    hostname = socket.gethostname()
-    ip_val = socket.gethostbyname(hostname)
+    dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width)
+
+    routes = json.loads(os.popen("ip -j -4 route").read()
+
+    ip_val = "Not Found"
+    for r in routes:
+        if r.get("dev") == "wlan0" and r.get("prefsrc"):
+            ip_val = r['prefsrc']
+            continue
+
+    # hostname = socket.gethostname()
+    # ip_val = socket.gethostbyname(hostname)
     ip_disp = "IP : " + ip_val
     # draw.rectangle([(0,0),(50,50)],outline = 0)
     # draw.rectangle([(0,0),(50,50)],outline = 0)
