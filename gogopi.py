@@ -13,7 +13,8 @@ from epd import epd2in13_V2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
-import socket
+from datetime import datetime
+import pytz
 import json
 
 logging.basicConfig(level=logging.DEBUG)
@@ -40,13 +41,19 @@ try:
     
     dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width)
 
-    # routes = json.loads(os.popen("ip -j -4 route").read()
+    # get wifi ip address
     ip_val = "Not Found"
     routes = json.loads(os.popen("ip -j -4 route").read())
     for r in routes:
         if r.get("dev") == "wlan0" and r.get("prefsrc"):
             ip_val = r['prefsrc']
             continue
+
+    # get local time    
+    tz_LA = pytz.timezone('America/Los_Angeles') 
+    datetime_LA = datetime.now(tz_LA)
+    time_disp = "Seattle time:", datetime_LA.strftime("%H:%M:%S")
+    # print("Seattle time:", datetime_LA.strftime("%H:%M:%S"))
 
     # hostname = socket.gethostname()
     # ip_val = socket.gethostbyname(hostname)
@@ -55,7 +62,8 @@ try:
     # draw.rectangle([(0,0),(50,50)],outline = 0)
     draw.text((0, 0), dimension, font = font15, fill = 0)
     draw.text((0, 30), ip_disp, font = font15, fill = 0)
-    draw.text((120, 60), 'ALOHA!!', font = font15, fill = 0)
+    draw.text((0, 60), time_disp, font = font15, fill = 0)
+    # draw.text((120, 60), 'ALOHA!!', font = font15, fill = 0)
     #draw.text((120, 60), 'e-Paper demo', font = font15, fill = 0)
     draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
     epd.display(epd.getbuffer(image))
