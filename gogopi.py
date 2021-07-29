@@ -13,6 +13,7 @@ from epd import epd2in13_V2
 import time
 from PIL import Image,ImageDraw,ImageFont
 import traceback
+import socket
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -36,10 +37,14 @@ try:
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
     draw = ImageDraw.Draw(image)
     
-    dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width)
+    dimension = "H: " + str(epd.height) + " " + "W: " + str( epd.width) 
+    hostname = socket.gethostname()
+    ip_val = socket.gethostbyname(hostname)
+    ip_disp = "IP : " + ip_val
     # draw.rectangle([(0,0),(50,50)],outline = 0)
     # draw.rectangle([(0,0),(50,50)],outline = 0)
     draw.text((0, 0), dimension, font = font15, fill = 0)
+    draw.text((0, 30), ip_disp, font = font15, fill = 0)
     draw.text((120, 60), 'ALOHA!!', font = font15, fill = 0)
     #draw.text((120, 60), 'e-Paper demo', font = font15, fill = 0)
     draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
