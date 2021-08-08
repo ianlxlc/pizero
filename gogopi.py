@@ -4,6 +4,7 @@ import sys
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+fntdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
@@ -34,6 +35,8 @@ try:
     #font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font15 = ImageFont.truetype(os.path.join(picdir, 'DejaVuSans.ttc'), 15)
     font24 = ImageFont.truetype(os.path.join(picdir, 'sss.ttf'), 24)
+
+    heading_type_1 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Bold.otf'), 15)
     
     logging.info("1.Drawing on the image...")
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
@@ -60,12 +63,54 @@ try:
     ip_disp = "IP : " + ip_val
     # draw.rectangle([(0,0),(50,50)],outline = 0)
     # draw.rectangle([(0,0),(50,50)],outline = 0)
-    draw.text((0, 0), dimension, font = font15, fill = 0)
-    draw.text((0, 30), ip_disp, font = font15, fill = 0)
-    draw.text((0, 60), time_disp, font = font15, fill = 0)
-    # draw.text((120, 60), 'ALOHA!!', font = font15, fill = 0)
-    #draw.text((120, 60), 'e-Paper demo', font = font15, fill = 0)
-    draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
+
+    # 背景斜线
+    # (right, down)
+    i = -122
+    while(i<=250):
+        start_r = i
+        start_d = -1
+        end_r = 122+i
+        end_d = 122
+
+        draw.line([(start_r,start_d),(end_r,end_d)], fill = 0,width = 2)
+
+        i += 10
+
+    width = 122
+    height = 250
+    draw.rectangle([(14,6),(height-6,width-14)],outline = 0,fill = 200)
+    draw.rectangle([(6,14),(height-14,width-6)],outline = 0,fill = 255)
+
+    ref_r = 6
+    ref_d = 14
+
+    ref_width = width - 20
+    ref_height = height - 20
+
+
+    # font15 = ImageFont.truetype(os.path.join(picdir, 'DejaVuSans.ttc'), 15)
+    draw.text((ref_r+10, ref_d+10), 'PINK', font = heading_type_1, fill = 0)
+    draw.rectangle([(ref_r+10, ref_d+15),(height-15,width-7)],fill = 255)
+    draw.text((ref_r+10, ref_d+15), 'PINK', font = heading_type_1, fill = 0)
+    draw.rectangle([(ref_r+10, ref_d+20),(height-15,width-7)],fill = 255)
+    draw.text((ref_r+10, ref_d+20), 'PINK', font = heading_type_1, fill = 0)
+
+
+
+
+
+
+    # draw.text((0, 0), dimension, font = font15, fill = 0)
+    # draw.text((0, 30), ip_disp, font = font15, fill = 0)
+    # draw.text((0, 60), time_disp, font = font15, fill = 0)
+    # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
+
+    # draw.text((0, 0), dimension, font = font15, fill = 0)
+    draw.text((100, 90), ip_disp, font = font15, fill = 0)
+    # draw.text((0, 60), time_disp, font = font15, fill = 0)
+    # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
+
     epd.display(epd.getbuffer(image))
     time.sleep(2)
     
