@@ -38,7 +38,7 @@ try:
 
     heading_type_1 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Bold.otf'), 15)
     heading_type_2 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Light.otf'), 12)
-    heading_type_3 = ImageFont.truetype(os.path.join(fntdir, '7DAYSFAT.TTF'), 12)
+    heading_type_3 = ImageFont.truetype(os.path.join(fntdir, 'digitmono.ttf'), 10)
     
     logging.info("1.Drawing on the image...")
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
