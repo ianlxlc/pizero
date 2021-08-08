@@ -109,7 +109,7 @@ try:
     # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
 
     # draw.text((0, 0), dimension, font = font15, fill = 0)
-    draw.text((ref_r+10, 100), ip_disp, font = heading_type_3, fill = 0)
+    draw.text((ref_r+10, 100), ip_disp, font = heading_type_2, fill = 0)
     # draw.text((0, 60), time_disp, font = font15, fill = 0)
     # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
 
