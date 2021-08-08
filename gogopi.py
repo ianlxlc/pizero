@@ -37,7 +37,8 @@ try:
     font24 = ImageFont.truetype(os.path.join(picdir, 'sss.ttf'), 24)
 
     heading_type_1 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Bold.otf'), 15)
-    heading_type_2 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Light.otf'), 10)
+    heading_type_2 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Light.otf'), 12)
+    heading_type_3 = ImageFont.truetype(os.path.join(fntdir, '7DAYSFAT.TTF'), 12)
     
     logging.info("1.Drawing on the image...")
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
@@ -108,7 +109,7 @@ try:
     # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
 
     # draw.text((0, 0), dimension, font = font15, fill = 0)
-    draw.text((100, 90), ip_disp, font = heading_type_2, fill = 0)
+    draw.text((ref_r+10, 100), ip_disp, font = heading_type_3, fill = 0)
     # draw.text((0, 60), time_disp, font = font15, fill = 0)
     # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
 
