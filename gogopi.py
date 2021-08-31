@@ -118,24 +118,24 @@ try:
 
 
     # test partial refresh
-    # epd.init(epd.PART_UPDATE)
-    # testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
-    # test_space_img_r = ref_r + 60
-    # test_space_img_d = ref_d + ref_width - 100
-    # draw.rectangle((test_space_img_r, test_space_img_d, test_space_img_r+63, test_space_img_d+56), fill = 255)
-    # image.paste(testImage,(test_space_img_r,test_space_img_d))
-    # epd.displayPartial(epd.getbuffer(image))
-
-
     epd.init(epd.PART_UPDATE)
-    num = 0
-    while (True):
-        draw.rectangle((60, 70, 160, 95), fill = 255)
-        draw.text((60, 70), time.strftime('%H:%M:%S'), font = heading_type_1, fill = 0)
-        epd.displayPartial(epd.getbuffer(image))
-        num = num + 1
-        if(num == 20):
-            break
+    testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
+    test_space_img_r = ref_r + 60
+    test_space_img_d = ref_d + ref_width - 100
+    draw.rectangle((test_space_img_r, test_space_img_d, test_space_img_r+63, test_space_img_d+56), fill = 0)
+    image.paste(testImage,(test_space_img_r,test_space_img_d))
+    epd.displayPartial(epd.getbuffer(image))
+
+
+    # epd.init(epd.PART_UPDATE)
+    # num = 0
+    # while (True):
+    #     draw.rectangle((60, 70, 160, 95), fill = 255)
+    #     draw.text((60, 70), time.strftime('%H:%M:%S'), font = heading_type_1, fill = 0)
+    #     epd.displayPartial(epd.getbuffer(image))
+    #     num = num + 1
+    #     if(num == 20):
+    #         break
 
 
     
