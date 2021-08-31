@@ -128,6 +128,8 @@ try:
     draw.rectangle((test_space_img_r, test_space_img_d, test_space_img_r+63, test_space_img_d+56), fill = 255)
     image.paste(testImage,(test_space_img_r,test_space_img_d))
     epd.displayPartial(epd.getbuffer(image))
+    epd.displayPartial(epd.getbuffer(image))
+    epd.displayPartial(epd.getbuffer(image))
 
 
     # epd.init(epd.PART_UPDATE)
