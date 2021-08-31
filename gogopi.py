@@ -118,9 +118,24 @@ try:
 
 
     # test partial refresh
+    # epd.init(epd.PART_UPDATE)
+    # testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
+    # epd.displayPartial(epd.getbuffer(testImage))
+    time_image = Image.new('1', (epd.height, epd.width), 255)
+    time_draw = ImageDraw.Draw(time_image)
+    
+    epd.init(epd.FULL_UPDATE)
+    epd.displayPartBaseImage(epd.getbuffer(time_image))
+    
     epd.init(epd.PART_UPDATE)
-    testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
-    epd.displayPartial(epd.getbuffer(testImage))
+    num = 0
+    while (True):
+        time_draw.rectangle((120, 80, 220, 105), fill = 255)
+        time_draw.text((120, 80), time.strftime('%H:%M:%S'), font = heading_type_1, fill = 0)
+        epd.displayPartial(epd.getbuffer(time_image))
+        num = num + 1
+        if(num == 10):
+            break
 
 
     
