@@ -115,6 +115,15 @@ try:
 
     epd.display(epd.getbuffer(image))
     time.sleep(2)
+
+
+    # test partial refresh
+    testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
+    test_space_img_r = ref_r + 60
+    test_space_img_d = ref_d + ref_width - 100
+    epd.display_partial_frame(testImage, test_space_img_r, test_space_img_d, 56, 62)
+
+
     
     logging.info("Goto Sleep...")
     epd.sleep()
