@@ -118,13 +118,13 @@ try:
 
 
     # test partial refresh
-    epd.init(epd.PART_UPDATE)
-    testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
-    test_space_img_r = ref_r + 60
-    test_space_img_d = ref_d + ref_width - 100
-    draw.rectangle((test_space_img_r, test_space_img_d, test_space_img_r+63, test_space_img_d+56), fill = 0)
-    image.paste(testImage,(test_space_img_r,test_space_img_d))
-    epd.displayPartial(epd.getbuffer(image))
+    # epd.init(epd.PART_UPDATE)
+    # testImage = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
+    # test_space_img_r = ref_r + 60
+    # test_space_img_d = ref_d + ref_width - 100
+    # draw.rectangle((test_space_img_r, test_space_img_d, test_space_img_r+63, test_space_img_d+56), fill = 0)
+    # image.paste(testImage,(test_space_img_r,test_space_img_d))
+    # epd.displayPartial(epd.getbuffer(image))
 
 
     # epd.init(epd.PART_UPDATE)
