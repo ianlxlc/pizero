@@ -31,10 +31,6 @@ try:
     
     # Drawing on the image
     print("picdir = ", picdir)
-    #font15 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 15)
-    #font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
-    font15 = ImageFont.truetype(os.path.join(picdir, 'DejaVuSans.ttc'), 15)
-    font24 = ImageFont.truetype(os.path.join(picdir, 'sss.ttf'), 24)
 
     heading_type_1 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Bold.otf'), 15)
     heading_type_2 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Light.otf'), 12)
@@ -57,7 +53,8 @@ try:
     # get local time    
     tz_LA = pytz.timezone('America/Los_Angeles') 
     datetime_LA = datetime.now(tz_LA)
-    time_disp = "Seattle time:" + datetime_LA.strftime("%H:%M:%S")
+    time_only = datetime_LA.strftime("%H:%M:%S")
+    time_disp = "Seattle time:" + time_only
 
     # print("Seattle time:", datetime_LA.strftime("%H:%M:%S"))
 
@@ -102,17 +99,19 @@ try:
 
 
 
+    # draw.text((ref_r+10, 100), ip_disp + " " + time_disp, font = heading_type_2, fill = 0)
+    draw.text((ref_r+10, 80), time_only, font = heading_type_2, fill = 0)
+    draw.text((ref_r+10, 100), ip_disp, font = heading_type_2, fill = 0)
 
 
-    # draw.text((0, 0), dimension, font = font15, fill = 0)
-    # draw.text((0, 30), ip_disp, font = font15, fill = 0)
-    # draw.text((0, 60), time_disp, font = font15, fill = 0)
-    # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
 
-    # draw.text((0, 0), dimension, font = font15, fill = 0)
-    draw.text((ref_r+10, 100), ip_disp + " " + time_disp, font = heading_type_2, fill = 0)
-    # draw.text((0, 60), time_disp, font = font15, fill = 0)
-    # draw.text((110, 90), u'你是小叮当', font = font24, fill = 0)
+
+    space_img = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
+    space_img_r = ref_r + ref_height - 65
+    space_img_d = ref_d + ref_width - 60
+    image.paste(space_img,(space_img_r,space_img_d))
+    draw.rectangle([(space_img_r+3,space_img_d+3),(space_img_r+62-3,space_img_d+56-3)],outline = 255)
+
 
     epd.display(epd.getbuffer(image))
     time.sleep(2)
