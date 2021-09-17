@@ -106,11 +106,12 @@ try:
 
 
 
-    space_img = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
-    space_img_r = ref_r + ref_height - 65
-    space_img_d = ref_d + ref_width - 60
+    space_img = Image.open(os.path.join(picdir, 'space_star_vb.png'))
+    space_img_r = ref_r + ref_height - 62
+    space_img_d = ref_d + ref_width - 58
     image.paste(space_img,(space_img_r,space_img_d))
-    draw.rectangle([(space_img_r+3,space_img_d+3),(space_img_r+62-3,space_img_d+56-3)],outline = 255)
+    # draw.rectangle([(space_img_r+3,space_img_d+3),(space_img_r+62-3,space_img_d+56-3)],outline = 255)
+    draw.rectangle([(space_img_r+2,space_img_d+2),(space_img_r+58-2,space_img_d+54-2)],outline = 255)
 
 
     epd.display(epd.getbuffer(image))
