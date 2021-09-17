@@ -18,6 +18,8 @@ from datetime import datetime
 import pytz
 import json
 
+print("Go start!")
+
 logging.basicConfig(level=logging.DEBUG)
 
 try:
