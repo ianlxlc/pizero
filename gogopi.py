@@ -35,6 +35,7 @@ try:
     heading_type_1 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Bold.otf'), 15)
     heading_type_2 = ImageFont.truetype(os.path.join(fntdir, 'Nexa Light.otf'), 12)
     heading_type_3 = ImageFont.truetype(os.path.join(fntdir, 'digitmono.ttf'), 10)
+    heading_type_4 = ImageFont.truetype(os.path.join(fntdir, 'miaomiao1.ttf'), 18)
     
     logging.info("1.Drawing on the image...")
     image = Image.new('1', (epd.height, epd.width), 255)  # 255: clear the frame    
@@ -100,10 +101,13 @@ try:
 
 
     # draw.text((ref_r+10, 100), ip_disp + " " + time_disp, font = heading_type_2, fill = 0)
-    draw.text((ref_r+10, 80), time_only, font = heading_type_2, fill = 0)
-    draw.text((ref_r+10, 100), ip_disp, font = heading_type_2, fill = 0)
 
+    # draw.text((ref_r+10, 80), time_only, font = heading_type_2, fill = 0)
+    # draw.text((ref_r+10, 100), ip_disp, font = heading_type_2, fill = 0)
 
+    draw.text((ref_r+100, ref_d+10), time_only + " + " + ip_disp, font = heading_type_2, fill = 0)
+    aword = "夜安，庄大小姐..."
+    draw.text((ref_r+10, ref_d+50), aword, font = heading_type_4, fill = 0)
 
 
     space_img = Image.open(os.path.join(picdir, 'space_talk_s.jpg'))
